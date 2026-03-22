@@ -1,7 +1,6 @@
 - name: Test NET cred issue
   hosts: localhost
-  gather_facts: false
-  # Gather facts must be false or OLD OS will fail, if you need it later then run setup module
+  gather_facts: true
 
   tasks:
 
@@ -9,9 +8,8 @@
     ansible.builtin.setup:
     run_once: true
     delegate_to: localhost
-    tags: ["inspec_exec"]
 
-  - name: Display all environment variables 
+  - name: Display all environment variables
     ansible.builtin.debug:
       msg: "{{ ansible_env }}"
     run_once: true
