@@ -1,22 +1,9 @@
-- name: Test NET cred issue
+---
+- name: Hello World Playbook
   hosts: localhost
-  gather_facts: true
-  # Gather facts must be false or OLD OS will fail, if you need it later then run setup module
+  gather_facts: false
 
   tasks:
-
-  - name: Gather facts for localhost
-    ansible.builtin.setup:
-    run_once: true
-    delegate_to: localhost
-    tags: ["inspec_exec"]
-
-  - name: Display all environment variables 
-    ansible.builtin.debug:
-      msg: "{{ ansible_env }}"
-    run_once: true
-    delegate_to: localhost
-
-  - name: pause
-    pause:
-      seconds: 300
+    - name: Print Hello World message
+      ansible.builtin.debug:
+        msg: "Hello, World!"
